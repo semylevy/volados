@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface ViewController : UIViewController
 
+@property (strong, nonatomic) UIImageView *animationImageView;
+@property (strong, nonatomic) AVAudioPlayer *player;
 
 @end
 
