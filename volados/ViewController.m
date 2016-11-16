@@ -17,10 +17,13 @@
 @implementation ViewController
 
 @synthesize animationImageView,
-            player;
+            player,
+            logo;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    CGFloat width = [UIScreen mainScreen].bounds.size.width;
     
     NSArray *imageNames = @[@"img1.png", @"img2.png", @"img3.png", @"img4.png", @"img5.png", @"img6.png", @"img7.png", @"img6.png", @"img5.png", @"img4.png", @"img3.png", @"img2.png"];
     
@@ -29,7 +32,11 @@
         [images addObject:[UIImage imageNamed:[imageNames objectAtIndex:i]]];
     }
     
-    animationImageView = [[UIImageView alloc] initWithFrame:CGRectMake(150, 500, 128, 128)];
+    logo = [[UIImageView alloc] initWithFrame:CGRectMake((width/2)-141.5, 40, 283, 142)];
+    UIImage *imageLogo = [UIImage imageNamed: @"logo.png"];
+    [logo setImage:imageLogo];
+    
+    animationImageView = [[UIImageView alloc] initWithFrame:CGRectMake((width/2)-64, 500, 128, 128)];
     UIImage *imageMoneda = [UIImage imageNamed: @"img1.png"];
     [animationImageView setImage:imageMoneda];
     animationImageView.animationImages = images;
@@ -47,6 +54,7 @@
     player.numberOfLoops = 0;
     
     [self.view addSubview:animationImageView];
+    [self.view addSubview:logo];
 }
 
 

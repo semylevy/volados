@@ -13,6 +13,7 @@
 @interface ViewController : UIViewController
 
 @property (strong, nonatomic) UIImageView *animationImageView;
+@property (strong, nonatomic) UIImageView *logo;
 @property (strong, nonatomic) AVAudioPlayer *player;
 
 @end
