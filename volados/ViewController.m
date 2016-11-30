@@ -24,6 +24,7 @@
             player3,
             player4,
             dedo,
+            dedo2,
             aguila,
             sol,
             porcentajes;
@@ -40,6 +41,10 @@
     dedo = [[UIImageView alloc] initWithFrame:CGRectMake(50, 550, 108.3, 133.5)];
     UIImage *imageDedo = [UIImage imageNamed: @"dedo.png"];
     [dedo setImage:imageDedo];
+    
+    dedo2 = [[UIImageView alloc] initWithFrame:CGRectMake(130, 540, 108.3, 133.5)];
+    UIImage *imageDedo2 = [UIImage imageNamed: @"dedo.png"];
+    [dedo2 setImage:imageDedo2];
     
     animationImageView = [[UIImageView alloc] initWithFrame:CGRectMake((width/2)-64, 500, 128, 128)];
     UIImage *imageMoneda = [UIImage imageNamed: @"img8.png"];
@@ -104,26 +109,49 @@
 }
 
 - (void)singleTouch:(id)sender {
-    [self.view addSubview:dedo];
-    
-    CABasicAnimation *transformAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
-    transformAnimation.duration = 0.7;
-    transformAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    transformAnimation.removedOnCompletion = NO;
-    transformAnimation.fillMode = kCAFillModeForwards;
-    
-    CATransform3D xform = CATransform3DIdentity;
-    xform = CATransform3DScale(xform, 1.0, 1.0, 1.0);
-    xform = CATransform3DTranslate(xform, 200, 0, 0);
-    transformAnimation.toValue = [NSValue valueWithCATransform3D:xform];
-    [self.dedo.layer addAnimation:transformAnimation forKey:@"transformAnimation"];
-    
-    double delayInSeconds = 0.7;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [dedo removeFromSuperview];
-    });
+    if(arc4random_uniform(2) == 1) {
+        [self.view addSubview:dedo];
+        
+        CABasicAnimation *transformAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
+        transformAnimation.duration = 0.7;
+        transformAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        transformAnimation.removedOnCompletion = NO;
+        transformAnimation.fillMode = kCAFillModeForwards;
+        
+        CATransform3D xform = CATransform3DIdentity;
+        xform = CATransform3DScale(xform, 1.0, 1.0, 1.0);
+        xform = CATransform3DTranslate(xform, 200, 0, 0);
+        transformAnimation.toValue = [NSValue valueWithCATransform3D:xform];
+        [self.dedo.layer addAnimation:transformAnimation forKey:@"transformAnimation"];
+        
+        double delayInSeconds = 0.7;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [dedo removeFromSuperview];
+        });
 
+    } else {
+        [self.view addSubview:dedo2];
+        
+        CABasicAnimation *transformAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
+        transformAnimation.duration = 0.7;
+        transformAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        transformAnimation.removedOnCompletion = NO;
+        transformAnimation.fillMode = kCAFillModeForwards;
+        
+        CATransform3D xform = CATransform3DIdentity;
+        xform = CATransform3DScale(xform, 1.0, 1.0, 1.0);
+        xform = CATransform3DTranslate(xform, 0, -200, 0);
+        transformAnimation.toValue = [NSValue valueWithCATransform3D:xform];
+        [self.dedo2.layer addAnimation:transformAnimation forKey:@"transformAnimation"];
+        
+        double delayInSeconds = 0.7;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [dedo2 removeFromSuperview];
+        });
+
+    }
 }
 
 - (void)lanzaFn:(id)sender {

@@ -20,6 +20,7 @@
 @property (strong, nonatomic) AVAudioPlayer *player3;
 @property (strong, nonatomic) AVAudioPlayer *player4;
 @property (strong, nonatomic) UIImageView *dedo;
+@property (strong, nonatomic) UIImageView *dedo2;
 @property (strong, nonatomic) UIImageView *aguila;
 @property (strong, nonatomic) UIImageView *sol;
 @property (strong, nonatomic) UITextField *porcentajes;
